@@ -1,52 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
+import 'package:tix_apps/bloc/blocs.dart';
 import 'package:tix_apps/service/services.dart';
+
+import 'ui/page/pages.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              RaisedButton(
-                onPressed: () async {
-                  SignInSignUpResult result = await AuthServices.signUp(
-                      "alfred@gmail.com",
-                      "123456",
-                      "Alva",
-                      ["Horror", "Comedy"],
-                      "Japan");
-
-                  if (result.user == null) {
-                    print(result.message);
-                  } else {
-                    print(result.user.toString());
-                  }
-                },
-                child: Text("Sign Up"),
-              ),
-              RaisedButton(
-                onPressed: () async {
-                  SignInSignUpResult result = await AuthServices.signIn(
-                    "alfred@gmail.com",
-                    "21312321",
-                  );
-
-                  if (result.user == null) {
-                    print(result.message);
-                  } else {
-                    print(result.user.toString());
-                  }
-                },
-                child: Text("Sign In"),
-              )
-            ],
-          ),
+    return StreamProvider.value(
+      value: AuthServices.userStream,
+      // Using MultiBlocProvider
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (_) => PageBloc(),
+          )
+        ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: Wrapper(),
         ),
       ),
     );

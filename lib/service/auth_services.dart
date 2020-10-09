@@ -51,6 +51,9 @@ class AuthServices {
   static Future<void> signOut() async {
     await _auth.signOut();
   }
+
+  // Notify if there is change in Firebase Authentication
+  static Stream<FirebaseUser> get userStream => _auth.onAuthStateChanged;
 }
 
 class SignInSignUpResult {

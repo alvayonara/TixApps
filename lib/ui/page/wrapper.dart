@@ -18,6 +18,10 @@ class Wrapper extends StatelessWidget {
     } else {
       // If prevPageEvent IS NOT Main Page then GoToMainPage
       if (!(prevPageEvent is GoToMainPage)) {
+        // Before move screen to MainPage,
+        // Load user data first from Firebase
+        context.bloc<UserBloc>().add(LoadUser(firebaseUser.uid));
+
         prevPageEvent = GoToMainPage();
         context.bloc<PageBloc>().add(prevPageEvent);
       }

@@ -106,8 +106,10 @@ class _MainPageState extends State<MainPage> {
               backgroundColor: Colors.transparent,
               selectedItemColor: mainColor,
               unselectedItemColor: Color(0xFFE5E5E5),
+              // Set current index based on bottomNavBarIndex value
               currentIndex: bottomNavBarIndex,
               items: [
+                // Index 0 nav bar item (New Movies)
                 BottomNavigationBarItem(
                   title: Text(
                     "New Movies",
@@ -128,6 +130,7 @@ class _MainPageState extends State<MainPage> {
                     ),
                   ),
                 ),
+                // Index 1 nav bar item (My Tickets)
                 BottomNavigationBarItem(
                   title: Text(
                     "My Tickets",
@@ -153,6 +156,7 @@ class _MainPageState extends State<MainPage> {
                 setState(() {
                   bottomNavBarIndex = index;
 
+                  // When bottom nav bar clicked, page will load based on index bottom nav bar selected
                   pageController.jumpToPage(index);
                 });
               },

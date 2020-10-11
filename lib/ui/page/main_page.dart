@@ -43,9 +43,7 @@ class _MainPageState extends State<MainPage> {
             controller: pageController,
             children: [
               // Index 0 -> New Movies
-              Center(
-                child: Text("Page New Movies"),
-              ),
+              MoviePage(),
               // Index 1 -> My Ticket
               Center(
                 child: Text("Page My Ticket"),
@@ -78,7 +76,13 @@ class _MainPageState extends State<MainPage> {
                     color: Colors.black.withOpacity(0.54),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  // Temporary function: use for SignOut account
+                  // Return to Initial State
+                  context.bloc<UserBloc>().add(SignOut());
+                  // Sign Out from Firebase
+                  AuthServices.signOut();
+                },
               ),
             ),
           )

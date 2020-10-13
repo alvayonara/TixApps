@@ -15,6 +15,7 @@ import 'package:tix_apps/model/models.dart';
 import 'package:tix_apps/service/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tix_apps/shared/shared.dart';
+import 'package:tix_apps/ui/widget/widgets.dart';
 
 part 'sign_in_page.dart';
 part 'wrapper.dart';

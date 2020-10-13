@@ -11,6 +11,7 @@ import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:tix_apps/bloc/blocs.dart';
+import 'package:tix_apps/main.dart';
 import 'package:tix_apps/model/models.dart';
 import 'package:tix_apps/service/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
